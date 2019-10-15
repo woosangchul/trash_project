@@ -19,6 +19,11 @@ that make up the Flowers data and creates two TFRecord datasets: one for train
 and one for test. Each TFRecord dataset is comprised of a set of TF-Example
 protocol buffers, each of which contain a single image and label.
 
+수정해야할 부분
+_NUM_VALIDATION : 테스트셋 개수설정 보통 전체데이터셋의 20%로 설정
+_NUM_SHARDS  : tfrecored 분할개수 (전체데이테용량 / _NUM_SHARDS ) 만큼 용량 차지함
+87번 라인  trash_root 수정 해당 폴더안에 이미지 집어넣어야함
+106번라인 tfrecord 로 저장할 파일name 수정할것
 The script should take about a minute to run.
 
 """
@@ -40,13 +45,13 @@ from datasets import dataset_utils
 _DATA_URL = 'http://download.tensorflow.org/example_images/flower_photos.tgz'
 
 # The number of images in the validation set.
-_NUM_VALIDATION = 700
+_NUM_VALIDATION = 1200
 
 # Seed for repeatability.
 _RANDOM_SEED = 0
 
 # The number of shards per dataset split.
-_NUM_SHARDS = 20
+_NUM_SHARDS = 40
 
 
 class ImageReader(object):
@@ -208,5 +213,5 @@ def run(dataset_dir):
   labels_to_class_names = dict(zip(range(len(class_names)), class_names))
   dataset_utils.write_label_file(labels_to_class_names, dataset_dir)
 
-  _clean_up_temporary_files(dataset_dir)
+  #_clean_up_temporary_files(dataset_dir)
   print('\nFinished converting the trash dataset!')
