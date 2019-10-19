@@ -1,0 +1,22 @@
+python export_inference_graph.py --alsologtostderr --model_name=inception_v4 --output_file=inception_v4_inf_graph_restavailable.pb
+
+
+
+
+
+python freeze_graph.py --input_graph=inception_v4_inf_graph_restavailable.pb --input_checkpoint=d:\tmp\train_inception_v4_trash_FineTune_logs\model.ckpt-1000 --input_binary=true --output_graph=inception_v4_graph_rest_available.pb --output_node_names=InceptionV4/Logits/Predictions
+
+python import_pb_to_tensorboard.py  --model_dir=inception_v4_graph_rest_available.pb --log_dir=tensorboard
+
+tensorboard --logdir=/tensor1/restavilable
+
+
+python retrain.py     --bottleneck_dir=/example/bottlenecks     --model_dir=/example/inception     --output_graph=/example/trash_graph.pb     --output_labels=/example/trash_labels.txt     --image_dir /example/trash     --how_many_training_steps 1000
+
+python train_image_classifier.py --train_dir=d:/tmp/train_inception_v4_trash_FineTune_logs --dataset_name=trash --dataset_split_name=train --dataset_dir=d:/image_dataset --model_name=inception_v4 --checkpoint_path=d:/tmp/train_inception_v4_trash_FineTune_logs/model.ckpt-1000 --checkpoint_exclude_scopes=InceptionV4/Logits,InceptionV4/AuxLogits --trainable_scopes=InceptionV4/Logits --max_number_of_steps=10000 --batch_size=16  --learning_rate=0.01 --learning_rate_decay_type=fixed --save_interval_secs=60 --save_summaries_secs=60 --log_every_n_steps=100 --optimizer=rmsprop --weight_decay=0.00004
+
+python retrain.py     --bottleneck_dir=/example/bottlenecks     --model_dir=/example/inception     --output_graph=/example/trash_graph.pb     --output_labels=/example/trash_labels.txt     --image_dir /example/trash     --how_many_training_steps 10000
+
+python train_image_classifier.py --train_dir=d:/tmp/train_inception_v4_trash_FineTune_logs --dataset_name=trash --dataset_split_name=train --dataset_dir=d:/image_dataset --model_name=inception_v4 --checkpoint_path=d:/inception_v4.ckpt --checkpoint_exclude_scopes=InceptionV4/Logits,InceptionV4/AuxLogits --trainable_scopes=InceptionV4/Logits,InceptionV4/AuxLogits --max_number_of_steps=1000 --batch_size=16  --learning_rate=0.01 --learning_rate_decay_type=fixed --save_interval_secs=300 --save_summaries_secs=300 --log_every_n_steps=200 --optimizer=rmsprop --weight_decay=0.00004
+
+python train_image_classifier.py --train_dir=d:/tmp/train_inception_v4_trash_FineTune_logs --dataset_name=trash --dataset_split_name=train --dataset_dir=d:/image_dataset --model_name=inception_v4 --checkpoint_path=d:/tmp/train_inception_v4_trash_FineTune_logs/model.ckpt-1000 --checkpoint_exclude_scopes=InceptionV4/Logits,InceptionV4/AuxLogits --trainable_scopes=InceptionV4/Logits,InceptionV4/AuxLogits --max_number_of_steps=10000 --batch_size=16  --learning_rate=0.01 --learning_rate_decay_type=fixed --save_interval_secs=300 --save_summaries_secs=300 --log_every_n_steps=200 --optimizer=rmsprop --weight_decay=0.00004

@@ -45,13 +45,13 @@ from datasets import dataset_utils
 _DATA_URL = 'http://download.tensorflow.org/example_images/flower_photos.tgz'
 
 # The number of images in the validation set.
-_NUM_VALIDATION = 1200
+_NUM_VALIDATION = 350
 
 # Seed for repeatability.
 _RANDOM_SEED = 0
 
 # The number of shards per dataset split.
-_NUM_SHARDS = 40
+_NUM_SHARDS = 20
 
 
 class ImageReader(object):
