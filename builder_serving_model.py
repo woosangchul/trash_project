@@ -1,6 +1,6 @@
 import tensorflow as tf
 
-export_path = '\\tmp\\inceptionv4_serving_restavailable_v3\\inceptionV4_v3\\1'
+export_path = '\\tmp\\inceptionv4_serving_restavailable_v5\\inceptionV4_v4_10000\\1'
 
 print('Exporting trained model to', export_path)
 builder = tf.saved_model.builder.SavedModelBuilder(export_path)

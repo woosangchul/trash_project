@@ -1,3 +1,8 @@
+"""
+소윤이네 incpetion_v3 모델 serving으로 배포하는 코드
+"""
+
+
 import tensorflow as tf
 
 export_path = '\\tmp\\inceptionv3_serving_restavailable\\inceptionV3_v2_10000\\1'
