@@ -1,0 +1,23 @@
+docker run -p 8501:8501 --mount type=bind,source=C:/tmp/tfserving/serving/tensorflow_serving/servables/tensorflow/testdata/saved_model_half_plus_two_cpu,target=/models/half_plus_two -e MODEL_NAME=half_plus_two -t tensorflow/serving &
+
+ÇöÁ¤ÆÀ
+docker run -p 8501:8501 -p 8500:8500 --mount type=bind,source=C:/tmp/inceptionv3_serving_restavailable/inceptionV3_v2_10000,target=/models/inceptionV3 -e MODEL_NAME=inceptionV3 -t tensorflow/serving &
+
+
+docker run -p 8501:8501 -p 8500:8500 --mount type=bind,source=C:/tmp/inceptionv4_serving_restavailable_v5/inceptionV4_v4_1000,target=/models/inceptionV4 -e MODEL_NAME=inceptionV4 -t tensorflow/serving &
+
+C:/tmp/tfserving/serving/tensorflow_serving/servables\tensorflow
+
+curl -d '{"instances": [1.0, 2.0, 5.0]}'   -X POST http://localhost:8501/v1/models/half_plus_two:predict
+
+
+
+python export_inference_graph.py --alsologtostderr --model_name=inception_v4 --output_file=inception_v4_inf_graph_restavailable_v3.pb
+
+
+python freeze_graph.py --input_graph=inception_v4_inf_graph_restavailable.pb --input_checkpoint=C:\tmp\train_inception_v1_caltech256_FineTune_logs\model.ckpt-10000 --input_binary=true --output_graph=inception_v4_graph_rest_available_10000.pb --output_node_names=InceptionV4/Logits/Predictions
+
+
+python import_pb_to_tensorboard.py  --model_dir=inception_v4_inf_graph_restavailable_v3.pb --log_dir=/tensor1/restavailable2
+
+C:/tmp/inceptionv4_serving/inceptionV4
