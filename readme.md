@@ -4,13 +4,9 @@
 
 #### 개발환경
 
-아나콘다
+- 아나콘다
 
-tensorflow 1.13
-
-numpy
-
-pandas
+- tensorflow 1.13, numpy, pandas, matplotlib, jupyter
 
 
 
@@ -44,7 +40,6 @@ train
 <trash.py>
 
 34 line : SPLITS_TO_SIZES = {'train': 15, 'validation': 5}
-
 36 line : _NUM_CLASSES = 3
 ```
 
@@ -136,10 +131,11 @@ docker run -p 8501:8501 -p 8500:8500 --mount type=bind,source=C:/tmp/inceptionv4
 
 - Docker서버 작동화면
 
-![도커서버 구동화면](z_readme image\도커서버 구동화면.png)
+![도커서버 구동화면](\z_readme image\도커서버 구동화면.png)
 
 
 
 - 주피터노트북에서 실행한 화면
 
-![주피터노트북 실행화면](z_readme image\주피터노트북 실행화면.png)
+![주피터노트북 실행화면](\z_readme image\주피터노트북 실행화면.png)
+
