@@ -1,2 +1,4 @@
 .ipynb_checkpoints/
-trainimage/*.tfrecord
+train/2_train_image/*.tfrecord
+train/1_inception_v4_checkpoint/
+train/3_checkpoint_dir/
