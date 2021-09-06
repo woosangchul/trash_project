@@ -1,0 +1,10 @@
+
+python download_and_convert_data.py --dataset_name=trash --dataset_dir=trainimage
+
+
+
+#학습
+python train_image_classifier.py --train_dir=train_dir --dataset_dir=trainimage --dataset_name=trash --dataset_split_name=train --model_name=inception_v4 --checkpoint_path=checkpoint_path/inception_v4.ckpt --checkpoint_exclude_scopes=InceptionV4/Logits,InceptionV4/AuxLogits --trainable_scopes=InceptionV4/Logits,InceptionV4/AuxLogits --max_number_of_steps=100 --batch_size=2 --learning_rate=0.01 --learning_rate_decay_type=fixed --save_interval_secs=300 --save_summaries_secs=300 --log_every_n_steps=200 --optimizer=rmsprop --weight_decay=0.00004 --clone_on_cpu=True
+
+#추론
+python eval_image_classifier.py --alsologtostderr --checkpoint_path=train_dir/model.ckpt-100 --dataset_dir=trainimage --dataset_name=trash --dataset_split_name=validation --model_name=inception_v4

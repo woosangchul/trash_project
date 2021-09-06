@@ -1,0 +1,3 @@
+0:can
+1:glass
+2:plastic
