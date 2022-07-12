@@ -1,5 +1,5 @@
 # 분리해! 인공지능 쓰레기통
-
+![img](https://user-images.githubusercontent.com/40749537/160983089-0d06924f-b0fd-4c15-9263-cc81680dcf1b.png) 
 
 
 #### 개발환경
